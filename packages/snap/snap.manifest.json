@@ -1,13 +1,13 @@
 {
   "version": "0.1.0",
-  "description": "An example Snap written in TypeScript.",
-  "proposedName": "TypeScript Example",
+  "description": "Welcome to Rainfall snap",
+  "proposedName": "Rainfall Snap",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/template-snap-monorepo.git"
   },
   "source": {
-    "shasum": "ufQns74hTklAsDcCm5Yd3qVw4iMs82eARCnn6IARlYE=",
+    "shasum": "HthPT5j123F0pR/6ZE8N002UYWNT7njRkv1ol1Xi75k=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -17,11 +17,7 @@
     }
   },
   "initialPermissions": {
-    "snap_dialog": {},
-    "endowment:rpc": {
-      "dapps": true,
-      "snaps": false
-    }
+    "endowment:page-home": {}
   },
   "manifestVersion": "0.1"
 }
