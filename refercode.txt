@@ -1,0 +1,231 @@
+// import { assert, UserInputEventType, type OnHomePageHandler, type OnUserInputHandler } from "@metamask/snaps-sdk";
+// import { Box, Heading, Text, Button, FileInput, Form, Field } from "@metamask/snaps-sdk/jsx";
+
+// // Home page handler that renders the UI
+// export const onHomePage: OnHomePageHandler = async () => {
+//   return {
+//     content: (
+//       <Box>
+//         <Heading>Hello world!</Heading>
+//         <Text>Welcome to my Snap home page!</Text>
+//         {/* Button that triggers a user input event */}
+//         <Button name="click_button">Click Me</Button>
+//         {/* File Upload Section */}
+//         <Box>
+//           <Heading>File Upload</Heading>
+//           <Form name="file-upload-form">
+//             <Field>
+//               <FileInput name="file-input" />
+//             </Field>
+//             <Button name="submit-file-upload-form" type="submit">
+//               Submit
+//             </Button>
+//           </Form>
+//         </Box>
+//       </Box>
+//     ),
+//   };
+// };
+
+// // User input handler that responds to button clicks and file uploads
+// export const onUserInput: OnUserInputHandler = async ({ event, id }) => {
+//   // Handle button click event
+//   if (event.type === UserInputEventType.ButtonClickEvent && event.name === "click_button") {
+//     // Update the interface when the button is clicked
+//     await snap.request({
+//       method: "snap_updateInterface",
+//       params: {
+//         id,
+//         ui: (
+//           <Box>
+//             <Text>The button was clicked!</Text>
+//           </Box>
+//         ),
+//       },
+//     });
+//   }
+
+//   // Handle file upload event
+//   if (event.type === UserInputEventType.FileUploadEvent && event.file !== null) {
+//     console.log(event.file);
+//   }
+// };
+
+//////////////////////////////---------------------------------------------------------------
+
+// import { assert, UserInputEventType, type OnHomePageHandler, type OnUserInputHandler } from "@metamask/snaps-sdk";
+// import { Box, Heading, Text, Button, FileInput, Form, Field } from "@metamask/snaps-sdk/jsx";
+
+// // Home page handler that renders the UI
+// export const onHomePage: OnHomePageHandler = async () => {
+//   return {
+//     content: (
+//       <Box>
+//         <Heading>Hello world!</Heading>
+//         <Text>Welcome to my Snap home page!</Text>
+//         {/* Button that triggers a user input event */}
+//         <Button name="click_button">Click Me</Button>
+        
+//         {/* File Upload Section */}
+//         <Form name="file-upload-form">
+//           <Field>
+//             <FileInput name="file-input" />
+//           </Field>
+//           <Button name="submit-file-upload-form" type="submit">
+//             Submit
+//           </Button>
+//         </Form>
+//       </Box>
+//     ),
+//   };
+// };
+
+// // User input handler that responds to button clicks and file uploads
+// export const onUserInput: OnUserInputHandler = async ({ event, id }) => {
+//   // Handle button click event
+//   if (event.type === UserInputEventType.ButtonClickEvent && event.name === "click_button") {
+//     handleButtonClick(id);
+//   }
+
+//   // Handle file upload event
+//   if (event.type === UserInputEventType.FileUploadEvent && event.file !== null) {
+//     handleFileUpload(event.file, id);
+//   }
+// };
+
+// // Function to handle button click
+// const handleButtonClick = async (id: string) => {
+//   await snap.request({
+//     method: "snap_updateInterface",
+//     params: {
+//       id,
+//       ui: (
+//         <Box>
+//           <Text>The button was clicked!</Text>
+//         </Box>
+//       ),
+//     },
+//   });
+// };
+
+// // Function to handle file upload
+// const handleFileUpload = async (file: { name: string; size: number; contentType: string; contents: string; }, id: string) => {
+//   console.log(file); // Log the uploaded file
+
+//   // Show a success message
+//   await snap.request({
+//     method: "snap_updateInterface",
+//     params: {
+//       id,
+//       ui: (
+//         <Box>
+//           <Text>File upload successful!</Text>
+//           <Text>Uploaded File: {file.name}</Text>
+//         </Box>
+//       ),
+//     },
+//   });
+// };
+
+///////////////----------------------------------------------------------------
+
+// import { assert, UserInputEventType, type OnHomePageHandler, type OnUserInputHandler } from "@metamask/snaps-sdk";
+// import { Box, Heading, Text, Button } from "@metamask/snaps-sdk/jsx";
+// import { ethers } from "ethers";
+
+// // Smart contract ABI (replace with your actual contract ABI)
+// const contractABI: ethers.Interface | ethers.InterfaceAbi = [
+//   // Your contract's ABI here
+// ];
+
+// // Smart contract address (replace with your deployed contract address)
+// const contractAddress = "0xYourContractAddress";
+
+// // Define your contract interface
+// interface YourContract {
+//   yourFunctionName: (/* parameters */) => Promise<void>; // Change return type if needed
+// }
+
+// // Home page handler that renders the UI
+// export const onHomePage: OnHomePageHandler = async () => {
+//   return {
+//     content: (
+//       <Box>
+//         <Heading>Hello world!</Heading>
+//         <Text>Welcome to my Snap home page!</Text>
+//         {/* Button that triggers the smart contract interaction */}
+//         <Button name="click_button">Click Me</Button>
+//       </Box>
+//     ),
+//   };
+// };
+
+// // User input handler that responds to button clicks
+// export const onUserInput: OnUserInputHandler = async ({ event, id }) => {
+//   // Handle button click event
+//   if (event.type === UserInputEventType.ButtonClickEvent && event.name === "click_button") {
+//     // Update the interface when the button is clicked
+//     await snap.request({
+//       method: "snap_updateInterface",
+//       params: {
+//         id,
+//         ui: (
+//           <Box>
+//             <Text>The button was clicked!</Text>
+//           </Box>
+//         ),
+//       },
+//     });
+
+//     // Interact with the smart contract
+//     try {
+//       // Check if the Ethereum provider is available
+//       const provider = (window as any).ethereum;
+//       if (!provider) {
+//         throw new Error("Ethereum provider is not available");
+//       }
+
+//       // Request account access
+//       await provider.request({ method: "eth_requestAccounts" });
+
+//       // Create a new provider instance and get the signer
+//       const signer = provider.getSigner();
+
+//       // Create a contract instance using ethers
+//       const contract: YourContract = new ethers.Contract(contractAddress, contractABI, signer) as unknown as YourContract;
+
+//       // Call a function on the smart contract
+//       await contract.yourFunctionName(/* parameters if needed */);
+      
+//       // Update the UI after calling the contract function
+//       await snap.request({
+//         method: "snap_updateInterface",
+//         params: {
+//           id,
+//           ui: (
+//             <Box>
+//               <Text>Smart contract function called successfully!</Text>
+//             </Box>
+//           ),
+//         },
+//       });
+//     } catch (error) {
+//       console.error("Error interacting with smart contract:", error);
+
+//       // Optionally update the UI to show the error
+//       await snap.request({
+//         method: "snap_updateInterface",
+//         params: {
+//           id,
+//           ui: (
+//             <Box>
+//               <Text>Error interacting with contract: {}</Text>
+//             </Box>
+//           ),
+//         },
+//       });
+//     }
+//   }
+// };
+///////---------------------------------------------------------------------
+
