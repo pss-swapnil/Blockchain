@@ -229,3 +229,32 @@
 // };
 ///////---------------------------------------------------------------------
 
+manifest
+{
+  "version": "0.1.0",
+  "description": "Welcome to rainfall snap",
+  "proposedName": "Rainfall snap",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+  },
+  "source": {
+    "shasum": "Pqn8SwO4pF4GK+3Uundx7BVACafJuW0Ypz5681FgndI=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "packageName": "rainfall-snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "endowment:page-home": {},
+    "endowment:ethereum-provider": {},
+    "endowment:network-access": {},
+    "endowment:transaction-insight": {
+      "allowTransactionOrigin": true
+    }
+  },
+  "manifestVersion": "0.1"
+}
