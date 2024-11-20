@@ -51,7 +51,7 @@ export default function Main({ }: Props) {
                     ),
                 }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="DebugContracts"
                 component={DebugContracts}
                 options={{
@@ -73,7 +73,7 @@ export default function Main({ }: Props) {
                         </>
                     ),
                 }}
-            />
+            /> */}
             <Tab.Screen
                 name="Wallet"
                 component={Wallet}
