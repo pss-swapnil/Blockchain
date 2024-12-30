@@ -1128,6 +1128,6 @@
   "newNumBatch": 4,
   "chainID": 1000,
   "forkID": 3,
-  "aggregatorAddress": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+  "aggregatorAddress": "",
   "inputSnark": "0x2b4cee8b70441373144781576ba4d09df1c259eef85f73585b373d7337621a5a"
 }

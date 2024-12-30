@@ -75,7 +75,7 @@
     },
     {
       "inputs": [],
-      "name": "admin",
+      "name": "treasury",
       "outputs": [
         {
           "internalType": "address",
