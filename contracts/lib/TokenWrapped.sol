@@ -52,7 +52,7 @@ contract TokenWrapped is ERC20 {
         
     ) ERC20(name, symbol) {
         bridgeAddress = msg.sender;
-        tresuryAddress = 0xDdA0279071Fd2269D1a69eD6BDe147324C6E930e;
+        tresuryAddress = 0xb59a58728763Fd1cF02311eA278F71eb8D3074ba;
         _decimals = __decimals;
         deploymentChainId = block.chainid;
         _DEPLOYMENT_DOMAIN_SEPARATOR = _calculateDomainSeparator(block.chainid);

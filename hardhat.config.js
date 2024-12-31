@@ -6,6 +6,7 @@ require('@nomiclabs/hardhat-etherscan');
 require('@openzeppelin/hardhat-upgrades');
 require('hardhat-dependency-compiler');
 
+DEFAULT_MNEMONIC = 'iron mask fetch mass jazz prosper else bulb wash marriage tent sample';
 
 /*
  * You need to export an object to set up your config

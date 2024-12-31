@@ -3,7 +3,7 @@
 const ethers = require('ethers');
 require('dotenv').config();
 
-const DEFAULT_MNEMONIC = 'amazing oval multiply sadness reform vapor inspire expand fork spend pilot ladder';
+const DEFAULT_MNEMONIC = 'iron mask fetch mass jazz prosper else bulb wash marriage tent sample';
 const DEFAULT_NUM_ACCOUNTS = 20;
 
 async function main() {
