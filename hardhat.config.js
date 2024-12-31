@@ -6,7 +6,6 @@ require('@nomiclabs/hardhat-etherscan');
 require('@openzeppelin/hardhat-upgrades');
 require('hardhat-dependency-compiler');
 
-const DEFAULT_MNEMONIC = 'test test test test test test test test test test test junk';
 
 /*
  * You need to export an object to set up your config
@@ -68,13 +67,15 @@ module.exports = {
   },
   networks: {
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-      accounts: {
-        mnemonic: process.env.MNEMONIC || DEFAULT_MNEMONIC,
-        path: "m/44'/60'/0'/0",
-        initialIndex: 0,
-        count: 20,
-      },
+      url: process.env.ETHEREUM_KEY || `https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+      accounts: process.env.PRIVATE_KEY 
+        ? [process.env.PRIVATE_KEY] 
+        : { 
+            mnemonic: process.env.MNEMONIC || DEFAULT_MNEMONIC,
+            path: "m/44'/60'/0'/0",
+            initialIndex: 0,
+            count: 20,
+          },
     },
     ropsten: {
       url: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
@@ -95,14 +96,16 @@ module.exports = {
       },
     },
     sepolia: {
-      url: `https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
-      accounts: {
-        mnemonic: process.env.MNEMONIC || DEFAULT_MNEMONIC,
-        path: "m/44'/60'/0'/0",
-        initialIndex: 0,
-        count: 20,
-      },
-    },
+      url: process.env.ETHEREUM_KEY || `https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+      accounts: process.env.PRIVATE_KEY 
+        ? [process.env.PRIVATE_KEY] 
+        : { 
+            mnemonic: process.env.MNEMONIC || DEFAULT_MNEMONIC,
+            path: "m/44'/60'/0'/0",
+            initialIndex: 0,
+            count: 20,
+          },
+    }, 
     rinkeby: {
       url: `https://rinkeby.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
       accounts: {

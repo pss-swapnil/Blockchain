@@ -43,9 +43,9 @@ describe('CDKValidium', () => {
 
     const networkIDMainnet = 0;
 
-    const urlSequencer = 'http://cdk-validium-json-rpc:8123';
+    const urlSequencer = 'http://34.148.230.225:8123/';
     const chainID = 1000;
-    const networkName = 'cdk-validium';
+    const networkName = 'Monsoon';
     const version = '0.0.1';
     const pendingStateTimeoutDefault = 10;
     const trustedAggregatorTimeoutDefault = 10;

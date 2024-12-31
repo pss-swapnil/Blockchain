@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0
-// Implementation of permit based on https://github.com/WETH10/WETH10/blob/main/contracts/WETH10.sol
 pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -28,6 +27,10 @@ contract TokenWrapped is ERC20 {
     // PolygonZkEVM Bridge address
     address public immutable bridgeAddress;
 
+    //Treasury Address
+    address public immutable tresuryAddress;
+
+
     // Decimals
     uint8 private immutable _decimals;
 
@@ -46,8 +49,10 @@ contract TokenWrapped is ERC20 {
         string memory name,
         string memory symbol,
         uint8 __decimals
+        
     ) ERC20(name, symbol) {
         bridgeAddress = msg.sender;
+        tresuryAddress = 0xDdA0279071Fd2269D1a69eD6BDe147324C6E930e;
         _decimals = __decimals;
         deploymentChainId = block.chainid;
         _DEPLOYMENT_DOMAIN_SEPARATOR = _calculateDomainSeparator(block.chainid);
@@ -66,6 +71,37 @@ contract TokenWrapped is ERC20 {
         return _decimals;
     }
 
+    // // Overriding the transfer method
+    // function transfer(address recipient, uint256 amount) public override returns (bool) {
+    //     if(msg.sender!=tresuryAddress)
+    //         revert ERC20InvalidReceiver(tresuryAddress);
+
+    //     // Add custom logic here if needed, for example:
+    //     // - Log extra events
+    //     // - Restrict transfers under certain conditions
+    //     // - Additional checks, etc.
+    //     require(recipient != address(0), "TokenWrapped::transfer: Transfer to the zero address");
+    //     require(amount > 0, "TokenWrapped::transfer: Amount must be greater than zero");
+
+    //     // Call the parent contract's transfer function
+    //     bool success = super.transfer(recipient, amount);
+
+    //     // Additional actions after transfer can be added here
+
+    //     return success;
+    // }
+
+    // Overriding the transfer method
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        // Only the treasury address (admin) is allowed to transfer tokens
+        require(msg.sender == tresuryAddress, "TokenWrapped::transfer: Not valid admin or treasury");
+        // Ensure the recipient is valid and the amount is greater than zero
+        require(recipient != address(0), "TokenWrapped::transfer: Transfer to the zero address");
+        require(amount > 0, "TokenWrapped::transfer: Amount must be greater than zero");
+
+        // Call the parent contract's transfer function
+        return super.transfer(recipient, amount);
+    }
     // Permit relative functions
     function permit(
         address owner,

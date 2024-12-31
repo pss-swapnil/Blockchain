@@ -669,7 +669,7 @@
     },
     {
       "inputs": [],
-      "name": "admin",
+      "name": "treasury",
       "outputs": [
         {
           "internalType": "address",
@@ -950,7 +950,7 @@
           "components": [
             {
               "internalType": "address",
-              "name": "admin",
+              "name": "Treasury",
               "type": "address"
             },
             {

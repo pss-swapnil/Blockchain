@@ -67,9 +67,9 @@ async function main() {
     /*
      *Deployment MATIC
      */
-    const maticTokenName = 'Matic Token';
-    const maticTokenSymbol = 'MATIC';
-    const maticTokenInitialBalance = ethers.utils.parseEther('20000000');
+    const maticTokenName = 'Raindrop';
+    const maticTokenSymbol = 'RDP';
+    const maticTokenInitialBalance = ethers.utils.parseEther('250000000');
 
     const maticTokenFactory = await ethers.getContractFactory('ERC20PermitMock', deployer);
     const maticTokenContract = await maticTokenFactory.deploy(
@@ -81,7 +81,7 @@ async function main() {
     await maticTokenContract.deployed();
 
     console.log('#######################\n');
-    console.log('Matic deployed to:', maticTokenContract.address);
+    console.log('RDP deployed to:', maticTokenContract.address);
 
     // fund sequencer account with tokens and ether if it have less than 0.1 ether.
     const balanceEther = await ethers.provider.getBalance(trustedSequencer);
@@ -93,7 +93,7 @@ async function main() {
         };
         await deployer.sendTransaction(params);
     }
-    const tokensBalance = ethers.utils.parseEther('100000');
+    const tokensBalance = ethers.utils.parseEther('0');
     await (await maticTokenContract.transfer(trustedSequencer, tokensBalance)).wait();
 
     // fund aggregator account with ether if it have less than 0.1 ether.

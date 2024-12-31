@@ -34,9 +34,9 @@ describe('Real flow test', () => {
 
     const networkIDMainnet = 0;
 
-    const urlSequencer = 'http://cdk-validium-json-rpc:8123';
+    const urlSequencer = 'http://34.148.230.225:8123/';
     const { chainID } = inputJson;
-    const networkName = 'cdk-validium';
+    const networkName = 'Monsoon';
     const version = '0.0.1';
     const forkID = 0;
     const pendingStateTimeoutDefault = 10;
