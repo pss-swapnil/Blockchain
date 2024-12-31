@@ -58,8 +58,10 @@ services:
       - ZKEVM_NODE_MTCLIENT_URI=${ZKEVM_NODE_MTCLIENT_URI:-}
       - ZKEVM_NODE_EXECUTOR_URI=${ZKEVM_NODE_EXECUTOR_URI:-}
     volumes:
-      - ./config/test.node.config.toml:/app/config.toml
-      - ./config/test.genesis.config.json:/app/genesis.json
+      # - ./config/test.node.config.toml:/app/config.toml
+      # - ./config/test.genesis.config.json:/app/genesis.json
+      - ../config/environments/main/node.config.toml:/app/config.toml
+      - ../config/environments/main/genesis-v1tov2.config.json:/app/genesis.json
       - ./:/datastreamer
     command:
       - "/bin/sh"
@@ -80,8 +82,10 @@ services:
       - ZKEVM_NODE_EXECUTOR_URI=${ZKEVM_NODE_EXECUTOR_URI:-}
       - ZKEVM_NODE_ETHERMAN_URL=http://zkevm-v1tov2-l1-network:8545
     volumes:
-      - ./config/test.node.config.toml:/app/config.toml
-      - ./config/test.genesis-v1tov2.config.json:/app/genesis.json
+      # - ./config/test.node.config.toml:/app/config.toml
+      # - ./config/test.genesis-v1tov2.config.json:/app/genesis.json
+      - ../config/environments/main/node.config.toml:/app/config.toml
+      - ../config/environments/main/genesis-v1tov2.config.json:/app/genesis.json
       - ./:/datastreamer
     command:
       - "/bin/sh"
@@ -99,8 +103,10 @@ services:
       - ZKEVM_NODE_EXECUTOR_URI=${ZKEVM_NODE_EXECUTOR_URI:-}
     volumes:
       - ./sequencer.keystore:/pk/sequencer.keystore
-      - ./config/test.node.config.toml:/app/config.toml
-      - ./config/test.genesis.config.json:/app/genesis.json
+      # - ./config/test.node.config.toml:/app/config.toml
+      # - ./config/test.genesis.config.json:/app/genesis.json
+      - ../config/environments/main/node.config.toml:/app/config.toml
+      - ../config/environments/main/genesis-v1tov2.config.json:/app/genesis.json
     command:
       - "/bin/sh"
       - "-c"
@@ -138,8 +144,8 @@ services:
       - ZKEVM_NODE_MTCLIENT_URI=${ZKEVM_NODE_MTCLIENT_URI:-}
       - ZKEVM_NODE_EXECUTOR_URI=${ZKEVM_NODE_EXECUTOR_URI:-}
     volumes:
-      - ./config/test.node.config.toml:/app/config.toml
-      - ./config/test.genesis.config.json:/app/genesis.json
+       - ./config/test.node.config.toml:/app/config.toml
+       - ./config/test.genesis.config.json:/app/genesis.json
     command:
       - "/bin/sh"
       - "-c"
