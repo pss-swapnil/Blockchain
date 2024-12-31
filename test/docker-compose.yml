@@ -50,7 +50,7 @@ services:
     image: zkevm-node
     ports:
       - 9092:9091 # needed if metrics enabled
-      - 6060:6060
+      - 6061:6060
       - 6900:6900 # Data stream server
     environment:
       - ZKEVM_NODE_STATE_DB_HOST=zkevm-state-db
@@ -73,7 +73,7 @@ services:
     image: zkevm-node
     ports:
       - 9092:9091 # needed if metrics enabled
-      - 6060:6060
+      - 6061:6060
       - 6900:6900 # Data stream server
     environment:
       - ZKEVM_NODE_STATE_DB_HOST=zkevm-state-db
@@ -316,7 +316,7 @@ services:
         reservations:
           memory: 1G
     ports:
-      - 5432:5432
+      - 5445:5432
     volumes:
       - ../db/scripts/init_prover_db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
