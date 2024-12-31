@@ -338,7 +338,7 @@ services:
         reservations:
           memory: 1G
     ports:
-      - 5433:5432
+      - 5436:5433
     environment:
       - POSTGRES_USER=pool_user
       - POSTGRES_PASSWORD=pool_password
